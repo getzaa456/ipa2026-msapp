@@ -1,0 +1,15 @@
+
+
+Router101>
+Router101>terminal width 511
+Router101>terminal length 0
+Router101>
+Router101>
+Router101>show ip int br
+Interface              IP-Address      OK? Method Status                Protocol
+GigabitEthernet1       10.0.29.101     YES NVRAM  up                    up      
+GigabitEthernet2       unassigned      YES unset  administratively down down    
+GigabitEthernet3       unassigned      YES unset  administratively down down    
+GigabitEthernet4       unassigned      YES unset  administratively down down    
+Router101>
+Router101>exit

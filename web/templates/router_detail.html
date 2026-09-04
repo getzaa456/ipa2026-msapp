@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Router Detail</title>
+  <style>
+    body {
+      background-color: #b0c4de;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    table, th, td {
+      border: 1px solid black;
+      border-collapse: collapse;
+      padding: 5px 10px;
+    }
+    th {
+      background-color: #d3d3d3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Router: {{ router_ip }}</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Interface</th>
+        <th>IP Address</th>
+        <th>Status</th>
+        <th>Protocol</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for record in records %}
+        {% for intf in record.interfaces %}
+        <tr>
+          <td>{{ record.timestamp.strftime('%Y-%m-%d %H:%M:%S.%f') }}</td>
+          <td>{{ intf.interface }}</td>
+          <td>{{ intf.ip_address }}</td>
+          <td>{{ intf.status }}</td>
+          <td>{{ intf.proto }}</td>
+        </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+
+</body>
+</html>
