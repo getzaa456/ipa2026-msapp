@@ -46,7 +46,6 @@ def delete_router(idx):
 
 @app.route("/router/<router_ip>")
 def router_detail(router_ip):
-    # ดึงข้อมูลสถานะ interface ของ router_ip นี้เรียงตามเวลาล่าสุดลงมา (sort -1)
     records = list(
         status_col.find({"router_ip": router_ip}).sort("timestamp", -1)
     )
