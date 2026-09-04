@@ -1,7 +1,9 @@
-from bson import json_util
 import json
-from router_client import get_interfaces
+
+from bson import json_util
 from database import save_interface_status
+from router_client import get_interfaces
+
 
 def callback(ch, method, props, body):
     job = json_util.loads(body.decode())
@@ -13,7 +15,7 @@ def callback(ch, method, props, body):
     try:
         output = get_interfaces(router_ip, router_username, router_password)
         print(json.dumps(output, indent=2))
-        
+
         # บันทึกลง MongoDB
         save_interface_status(router_ip, output)
     except Exception as e:
