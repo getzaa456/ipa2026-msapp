@@ -7,9 +7,7 @@ def produce(host, body):
     password = os.environ.get("RABBITMQ_PASS", "rabbitmq")
 
     credentials = pika.PlainCredentials(user, password)
-    parameters = pika.ConnectionParameters(
-        host=host, credentials=credentials
-    )
+    parameters = pika.ConnectionParameters(host=host, credentials=credentials)
 
     connection = pika.BlockingConnection(parameters)
     channel = connection.channel()
@@ -22,9 +20,7 @@ def produce(host, body):
         routing_key="check_interfaces",
     )
 
-    channel.basic_publish(
-        exchange="jobs", routing_key="check_interfaces", body=body
-    )
+    channel.basic_publish(exchange="jobs", routing_key="check_interfaces", body=body)
 
     connection.close()
 
