@@ -7,7 +7,7 @@ from producer import produce
 
 
 def scheduler():
-    INTERVAL = 10.0
+    INTERVAL = 30.0
     next_run = time.monotonic()
     count = 0
 

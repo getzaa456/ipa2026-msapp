@@ -44,7 +44,9 @@ def delete_router(idx):
 
 @app.route("/router/<router_ip>")
 def router_detail(router_ip):
-    records = list(status_col.find({"router_ip": router_ip}).sort("timestamp", -1))
+    records = list(
+        status_col.find({"router_ip": router_ip}).sort("timestamp", -1).limit(5)
+    )
     return render_template("router_detail.html", router_ip=router_ip, records=records)
 
 
